@@ -30,6 +30,7 @@ function setTime() {
     const hoursForClock = hours % 12
     const minutes = time.getMinutes();
     const seconds = time.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM'
 
     // Set the parameters of time with hours minutes seconds 
     hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock, 0 ,11, 0, 360)}deg)`
@@ -37,6 +38,9 @@ function setTime() {
     minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(minutes, 0 ,59, 0, 360)}deg)`
 
     secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(seconds, 0 ,59, 0, 360)}deg)`
+
+    // handle 0 showing on single digit values.
+    timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
 
 }
 
