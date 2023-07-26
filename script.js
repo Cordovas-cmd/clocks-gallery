@@ -26,6 +26,7 @@ function setTime() {
     const time = new Date();
     const month = time.getMonth();
     const day = time.getDay();
+    const date = time.getDate();
     const hours = time.getHours();
     const hoursForClock = hours % 12
     const minutes = time.getMinutes();
@@ -41,6 +42,8 @@ function setTime() {
 
     // handle 0 showing on single digit values.
     timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
+
+    dateEl.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`
 
 }
 
